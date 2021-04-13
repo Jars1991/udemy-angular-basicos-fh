@@ -1,4 +1,4 @@
-<h1>Dargon Ball Z</h1>
+<h1>Dragon Ball Z</h1>
 <hr>
 
 <div class="row">
@@ -12,11 +12,11 @@
     </ul>
   </div>
   <div class="col">
-    <h3>Agregar</h3>
+    <h3>Agregar <small>{{ newCharacter.name }}</small></h3>
     <hr>
-    <form>
-      <input type="text" placeholder="Nombre">
-      <input type="number" placeholder="Poder">
+    <form (ngSubmit)="addCharacter()">
+      <input type="text" placeholder="Nombre" [(ngModel)]="newCharacter.name" name="name">
+      <input type="number" placeholder="Poder" [(ngModel)]="newCharacter.power" name="power">
       <button>Agregar</button>
     </form>
   </div>
