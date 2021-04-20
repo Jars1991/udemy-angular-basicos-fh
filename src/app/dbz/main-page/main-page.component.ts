@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 
 import { Character } from '../interfaces/dbz.interfaces';
 
+import { DbzService } from '../services/dbz.service';
+
+
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -9,33 +12,14 @@ import { Character } from '../interfaces/dbz.interfaces';
 })
 export class MainPageComponent {
 
-  characters: Character[] = [
-    {
-      name: 'Goku',
-      power: 14000
-    },
-    {
-      name: 'Krillin',
-      power: 5000
-    },
-    {
-      name: 'Vegeta',
-      power: 7000
-    }
-  ];
+  constructor(private DbzService: DbzService){}
+
+  get characters(): Character[] {
+    return this.DbzService.characters;
+  }
 
   newCharacter: Character = {
     name: 'trunks',
     power: 14000
   };
-
-  onNewCharacter(event: Character) {
-    if(event.name.trim().length == 0){return;}
-
-    this.characters.push(event);
-    this.newCharacter = {
-      name: '',
-      power: 0
-    };
-  }
 }
